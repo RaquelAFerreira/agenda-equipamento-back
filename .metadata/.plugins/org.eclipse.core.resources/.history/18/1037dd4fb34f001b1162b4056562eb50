@@ -1,0 +1,11 @@
+package br.com.alterdata.agendaEquipamento.models;
+import java.util.List;
+import br.com.alterdata.agendaEquipamento.enums.Situacao;
+
+public class Solicitacao {
+	
+	Usuario solicitante;
+	Situacao situacao = Situacao.ANALISE;
+	List <Equipamento> equipamentos;
+	
+}

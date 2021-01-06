@@ -1,0 +1,10 @@
+package br.com.alterdata.agendaEquipamento.models;
+
+public class Usuario {
+	
+	String cpf;
+	String nome;
+	String login;
+	boolean admin;
+	
+}

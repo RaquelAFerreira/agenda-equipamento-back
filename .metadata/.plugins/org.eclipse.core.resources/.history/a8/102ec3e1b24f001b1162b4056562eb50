@@ -1,0 +1,9 @@
+package br.com.alterdata.agendaEquipamento.models;
+
+public class Solicitante {
+	
+	String cpf;
+	String nome;
+	String pis;	
+	
+}

@@ -1,0 +1,17 @@
+package br.com.alterdata.agendaEquipamento.models;
+
+import br.com.alterdata.agendaEquipamento.enums.CategoriaEquipamento;
+
+public class Equipamento {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="idEquipamento")
+	private Integer idEquipamento;
+	
+	String codigo;
+	CategoriaEquipamento categoria;
+	String descricao;
+	boolean livre;
+
+}

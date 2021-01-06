@@ -1,0 +1,72 @@
+package br.com.alterdata.agendaEquipamento.models;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import br.com.alterdata.agendaEquipamento.enums.CategoriaEquipamento;
+
+public class Equipamento {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="idEquipamento")
+	private Integer idEquipamento;
+	
+	@NotNull
+	@Column(name = "codigo", unique = true)
+	String codigo;
+	
+	@NotNull
+	@Column(name = "categoria")
+	CategoriaEquipamento categoria;
+	
+	@NotNull
+	@Column(name = "descricao")
+	@Size(min = 0, max = 75)
+	String descricao;
+	
+	@NotNull
+	@Column(name = "livre")
+	boolean livre;
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(String codigo) {
+		this.codigo = codigo;
+	}
+
+	public CategoriaEquipamento getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(CategoriaEquipamento categoria) {
+		this.categoria = categoria;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public boolean isLivre() {
+		return livre;
+	}
+
+	public void setLivre(boolean livre) {
+		this.livre = livre;
+	}
+
+	public Integer getIdEquipamento() {
+		return idEquipamento;
+	}
+
+}

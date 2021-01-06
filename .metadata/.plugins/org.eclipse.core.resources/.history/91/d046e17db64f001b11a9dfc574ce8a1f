@@ -1,0 +1,11 @@
+package br.com.alterdata.agendaEquipamento.models;
+
+import br.com.alterdata.agendaEquipamento.enums.CategoriaEquipamento;
+
+public class Equipamento {
+	
+	String codigo;
+	CategoriaEquipamento categoria;
+	boolean livre;
+
+}

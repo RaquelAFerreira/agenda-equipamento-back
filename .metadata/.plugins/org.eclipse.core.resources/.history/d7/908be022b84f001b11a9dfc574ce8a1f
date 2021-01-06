@@ -1,0 +1,8 @@
+package br.com.alterdata.agendaEquipamento.enums;
+
+public enum CategoriaEquipamento {
+	
+	CADEIRA, 
+	DESKTOP;
+
+}

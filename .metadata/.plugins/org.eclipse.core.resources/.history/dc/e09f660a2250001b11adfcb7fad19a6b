@@ -1,0 +1,35 @@
+package br.com.alterdata.agendaEquipamento.models;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import br.com.alterdata.agendaEquipamento.enums.Situacao;
+
+@Entity
+@Table(name = "solicitacao")
+public class Solicitacao {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="idSolicitacao")
+	private Integer idSolicitacao;
+	
+	@NotNull
+	@Column(name = "solicitante")
+	private Usuario solicitante;
+	
+	@NotNull
+	@Column(name = "situacao")
+	private Situacao situacao;
+	
+	@NotNull
+	@Column(name = "equipamentos")
+	private List <Equipamento> equipamentos;
+	
+}

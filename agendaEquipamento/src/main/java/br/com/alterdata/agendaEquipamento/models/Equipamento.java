@@ -20,8 +20,8 @@ public class Equipamento {
 	private Integer idEquipamento;
 	
 	@NotNull
-	@Column(name = "codigo", unique = true)
-	private String codigo;
+	@Column(name = "codigoEquipamento", unique = true)
+	private String codigoEquipamento;
 	
 	@NotNull
 	@Column(name = "categoria")

@@ -1,4 +1,6 @@
 package br.com.alterdata.agendaEquipamento.models;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +17,7 @@ import br.com.alterdata.agendaEquipamento.enums.Situacao;
 
 @Entity
 @Table(name = "solicitacao")
-public class Solicitacao {
+public class Solicitacao{
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -30,37 +32,73 @@ public class Solicitacao {
 	@Column(name = "situacao")
 	private Situacao situacao;
 	
+	@NotNull
+	@Column(name = "codigoSolicitacao", unique = true)
+	private String codigoSolicitacao;
+	
+	@NotNull
+	@Column(name = "data")
+	private LocalDate data;
+	
+	@NotNull
+	@Column(name = "hora")
+	private LocalTime hora;
+	
 	@OneToMany
 	@JoinTable (name = "equipamentosSolicitacao",
 			joinColumns = @JoinColumn(name = "idSolicitacao"),
 			inverseJoinColumns = @JoinColumn(name = "idEquipamento"))
 	private List<Equipamento> equipamentos;
 
-	public Usuario getSolicitante() {
+	public Usuario getSolicitante(){
 		return solicitante;
 	}
 
-	public void setSolicitante(Usuario solicitante) {
+	public void setSolicitante(Usuario solicitante){
 		this.solicitante = solicitante;
 	}
 
-	public Situacao getSituacao() {
+	public Situacao getSituacao(){
 		return situacao;
 	}
 
-	public void setSituacao(Situacao situacao) {
+	public void setSituacao(Situacao situacao){
 		this.situacao = situacao;
 	}
 
-	public List<Equipamento> getEquipamentos() {
+	public List<Equipamento> getEquipamentos(){
 		return equipamentos;
 	}
 
-	public void setEquipamentos(List<Equipamento> equipamentos) {
+	public void setEquipamentos(List<Equipamento> equipamentos){
 		this.equipamentos = equipamentos;
 	}
 
-	public Integer getIdSolicitacao() {
+	public String getCodigoSolicitacao() {
+		return codigoSolicitacao;
+	}
+
+	public void setCodigoSolicitacao(String codigoSolicitacao) {
+		this.codigoSolicitacao = codigoSolicitacao;
+	}
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public LocalTime getHora() {
+		return hora;
+	}
+
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
+	}
+
+	public Integer getIdSolicitacao(){
 		return idSolicitacao;
 	}
 	

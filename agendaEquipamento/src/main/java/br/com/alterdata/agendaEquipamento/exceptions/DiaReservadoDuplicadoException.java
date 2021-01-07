@@ -1,0 +1,29 @@
+package br.com.alterdata.agendaEquipamento.exceptions;
+
+import java.time.LocalDate;
+
+public class DiaReservadoDuplicadoException extends Exception{
+
+private static final long serialVersionUID = -6840138218861403331L;
+	
+	private String msg = "A solicitacao informada já existe";
+	private LocalDate data;
+	
+	public DiaReservadoDuplicadoException(){
+		super();
+	}
+	
+	public DiaReservadoDuplicadoException(LocalDate data){
+		super();
+		this.data = data;
+	}
+	
+	public String getMsg(){
+		return msg;
+	}
+	
+	public LocalDate getCodigoSolicitacao(){
+		return data;
+	}
+	
+}

@@ -1,0 +1,64 @@
+package br.com.alterdata.agendaEquipamento.services;
+
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Optional;
+import javax.transaction.Transactional;
+import br.com.alterdata.agendaEquipamento.exceptions.DiaReservadoDuplicadoException;
+import br.com.alterdata.agendaEquipamento.models.DiaReservado;
+import br.com.alterdata.agendaEquipamento.repositorys.DiaReservadoRepository;
+
+public class DiaReservadoService {
+
+	DiaReservadoRepository diaReservadoRepository;
+	
+	@Transactional
+	public DiaReservado create(DiaReservado diaReservado) throws DiaReservadoDuplicadoException{
+		DiaReservado diaReservadoEncontrado = diaReservadoRepository.getWithData(diaReservado.getData());
+		if (diaReservadoEncontrado == null) {
+			return diaReservadoRepository.save(diaReservado);	
+		} else {
+			throw new DiaReservadoDuplicadoException(diaReservado.getData());
+		}
+	}
+	
+	@Transactional
+	public DiaReservado getByData(LocalDate data){
+		return diaReservadoRepository.getWithData(data);
+	}
+
+	@Transactional
+	public List<DiaReservado> getAll(){
+		List<DiaReservado> diasReservados = diaReservadoRepository.findAll();
+		return diasReservados;
+	}
+	
+	@Transactional
+	public Optional<DiaReservado> getbyId(Integer id){
+		return diaReservadoRepository.findById(id);
+	}
+	
+	@Transactional
+	public boolean delete(Integer id){
+		Optional<DiaReservado> diaReservado = diaReservadoRepository.findById(id);
+		
+		if (diaReservado.isPresent()) {
+			diaReservadoRepository.delete(diaReservado.get());
+			return true; 
+		} else {
+			return false;
+		}
+	}
+	
+	@Transactional
+	public DiaReservado update(Integer id, DiaReservado diaReservado){
+		Optional<DiaReservado> diaReservadoSelecionado = diaReservadoRepository.findById(id);
+		DiaReservado diaReservadoAtualizado = diaReservadoSelecionado.get();
+		
+		if (diaReservado.getDescricao().equals("") == false && diaReservado.getDescricao() != null) {
+			diaReservadoAtualizado.setDescricao(diaReservado.getDescricao());
+		}
+		
+		return diaReservadoRepository.save(diaReservadoAtualizado);
+	}
+}

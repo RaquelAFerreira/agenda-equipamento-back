@@ -1,0 +1,11 @@
+package br.com.alterdata.agendaEquipamento.services;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class UsuarioService {
+	
+	@Autowired
+	UsuarioRepository usuarioRepository;
+
+}

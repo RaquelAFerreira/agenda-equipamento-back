@@ -1,0 +1,8 @@
+package br.com.alterdata.agendaEquipamento.services;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import br.com.alterdata.agendaEquipamento.models.Solicitacao;
+
+public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Integer> {
+
+}

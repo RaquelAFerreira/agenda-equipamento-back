@@ -1,0 +1,50 @@
+package br.com.alterdata.agendaEquipamento.models;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+@Entity
+@Table(name = "dia_reservado")
+public class DiaReservado {
+	
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column(name="id_dia_reservado")
+	private Integer idDiaReservado;
+	
+	@NotNull
+	@Column(name = "data")
+	private LocalDate data;
+	
+	@NotNull
+	@Column(name = "descricao")
+	private String descricao;
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Integer getIdDiaReservado() {
+		return idDiaReservado;
+	}
+
+}

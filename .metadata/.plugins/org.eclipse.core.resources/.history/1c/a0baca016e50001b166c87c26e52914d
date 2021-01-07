@@ -1,0 +1,24 @@
+package br.com.alterdata.agendaEquipamento.exceptions;
+
+public class EquipamentoDuplicadoException extends Exception{
+	
+private static final long serialVersionUID = -6840138218861403331L;
+	
+	private String msg = "O código do equipamento informado já existe";
+	private String codigoEquipamento;
+	
+	public EquipamentoDuplicadoException() {
+		super();
+	}
+	public EquipamentoDuplicadoException(String codigoEquipamento) {
+		super();
+		this.codigoEquipamento = codigoEquipamento;
+	}
+	public String getMsg() {
+		return msg;
+	}
+	public String getCodigoEquipamento() {
+		return codigoEquipamento;
+	}
+
+}

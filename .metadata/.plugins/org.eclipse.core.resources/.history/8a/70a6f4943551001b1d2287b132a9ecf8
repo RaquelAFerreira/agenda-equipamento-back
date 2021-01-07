@@ -1,0 +1,5 @@
+package br.com.alterdata.agendaEquipamento.configurations;
+
+public class SwaggerConfig {
+
+}

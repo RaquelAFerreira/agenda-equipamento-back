@@ -36,12 +36,12 @@ public class Equipamento {
 	@Column(name = "disponivel")
 	boolean disponivel;
 
-	public String getCodigo() {
-		return codigo;
+	public String getCodigoEquipamento() {
+		return codigoEquipamento;
 	}
 
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setCodigo(String codigoEquipamento) {
+		this.codigoEquipamento = codigoEquipamento;
 	}
 
 	public CategoriaEquipamento getCategoria() {

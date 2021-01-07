@@ -60,11 +60,11 @@ public class Equipamento {
 		this.descricao = descricao;
 	}
 
-	public boolean isLivre() {
+	public boolean isDisponivel() {
 		return disponivel;
 	}
 
-	public void setLivre(boolean disponivel) {
+	public void setDisponivel(boolean disponivel) {
 		this.disponivel = disponivel;
 	}
 

@@ -45,7 +45,6 @@ INDEX VERSION 1.131+C:\dsn.pack\agenda-equipamento\backend\.metadata\.plugins\or
 612809015.index
 938984164.index
 848384445.index
-3388750567.index
 2899819138.index
 599724140.index
 1445311891.index

@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import br.com.alterdata.agendaEquipamento.exceptions.DiaReservadoDuplicadoException;
 import br.com.alterdata.agendaEquipamento.models.DiaReservado;
-import br.com.alterdata.agendaEquipamento.repositories.DiaReservadoRepository;
+import br.com.alterdata.agendaEquipamento.repositorys.DiaReservadoRepository;
 
 @Service
 public class DiaReservadoService {

@@ -6,7 +6,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import br.com.alterdata.agendaEquipamento.exceptions.LoginDuplicadoException;
 import br.com.alterdata.agendaEquipamento.models.Usuario;
-import br.com.alterdata.agendaEquipamento.repositories.UsuarioRepository;
+import br.com.alterdata.agendaEquipamento.repositorys.UsuarioRepository;
 
 @Service
 public class UsuarioService{

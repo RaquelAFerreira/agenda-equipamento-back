@@ -1,18 +1,25 @@
 package br.com.alterdata.agendaEquipamento.services;
 import java.util.List;
 import java.util.Optional;
+
 import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.com.alterdata.agendaEquipamento.exceptions.EquipamentoDuplicadoException;
 import br.com.alterdata.agendaEquipamento.models.Equipamento;
 import br.com.alterdata.agendaEquipamento.repositories.EquipamentoRepository;
 
+@Service
 public class EquipamentoService {
 
+	@Autowired
 	EquipamentoRepository equipamentoRepository;
 	
 	@Transactional
 	public Equipamento create(Equipamento equipamento) throws EquipamentoDuplicadoException{
-		Equipamento equipamentoEncontrado = equipamentoRepository.getWithCodigoEquipamento(equipamento.getCodigoEquipamento());
+		Equipamento equipamentoEncontrado = equipamentoRepository.getByCodigoEquipamento(equipamento.getCodigoEquipamento());
 		if (equipamentoEncontrado == null) {
 			return equipamentoRepository.save(equipamento);	
 		} else {
@@ -21,14 +28,13 @@ public class EquipamentoService {
 	}
 	
 	@Transactional
-	public Equipamento getByEquipamento(String codigoEquipamento){
-		return equipamentoRepository.getWithCodigoEquipamento(codigoEquipamento);
+	public Equipamento getByCodigoEquipamento(String codigoEquipamento){
+		return equipamentoRepository.getByCodigoEquipamento(codigoEquipamento);
 	}
 
 	@Transactional
 	public List<Equipamento> getAll(){
-		List<Equipamento> equipamentos = equipamentoRepository.findAll();
-		return equipamentos;
+		return equipamentoRepository.findAll();
 	}
 	
 	@Transactional
@@ -56,10 +62,6 @@ public class EquipamentoService {
 		if (equipamento.getDescricao().equals("") == false && equipamento.getDescricao() != null) {
 			equipamentoAtualizado.setDescricao(equipamento.getDescricao());
 		}
-		
-//		if (equipamento.isDisponivel() == true || equipamento.isDisponivel() == false ) {
-//			equipamentoAtualizado.setDisponivel(equipamento.isDisponivel());
-//		}
 		
 		return equipamentoRepository.save(equipamentoAtualizado);
 	}

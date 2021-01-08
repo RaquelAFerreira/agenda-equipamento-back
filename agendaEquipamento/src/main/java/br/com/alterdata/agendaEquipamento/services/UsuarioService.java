@@ -12,11 +12,12 @@ import br.com.alterdata.agendaEquipamento.repositories.UsuarioRepository;
 @Service
 public class UsuarioService{
 	
+	@Autowired
 	UsuarioRepository usuarioRepository;
 	
 	@Transactional
 	public Usuario create(Usuario usuario) throws LoginDuplicadoException{
-		Usuario usuarioEncontrado = usuarioRepository.getWithLogin(usuario.getLogin());
+		Usuario usuarioEncontrado = usuarioRepository.getByLogin(usuario.getLogin());
 		if (usuarioEncontrado == null) {
 			return usuarioRepository.save(usuario);	
 		} else {

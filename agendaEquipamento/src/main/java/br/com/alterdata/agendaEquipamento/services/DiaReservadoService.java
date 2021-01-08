@@ -28,13 +28,12 @@ public class DiaReservadoService {
 	
 	@Transactional
 	public DiaReservado getByData(LocalDate data){
-		return diaReservadoRepository.getWithData(data);
+		return diaReservadoRepository.getByData(data);
 	}
 
 	@Transactional
 	public List<DiaReservado> getAll(){
-		List<DiaReservado> diasReservados = diaReservadoRepository.findAll();
-		return diasReservados;
+		return diaReservadoRepository.findAll();
 	}
 	
 	@Transactional

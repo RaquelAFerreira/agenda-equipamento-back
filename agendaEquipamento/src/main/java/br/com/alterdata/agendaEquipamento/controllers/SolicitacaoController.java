@@ -1,0 +1,75 @@
+package br.com.alterdata.agendaEquipamento.controllers;
+
+import java.util.List;
+import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import br.com.alterdata.agendaEquipamento.models.Solicitacao;
+import br.com.alterdata.agendaEquipamento.services.SolicitacaoService;
+import br.com.alterdata.agendaEquipamento.exceptions.SolicitacaoDuplicadaException;
+import io.swagger.annotations.ApiOperation;
+//import org.springframework.web.bind.annotation.PutMapping;
+
+@RestController
+@RequestMapping({ "/solicitacao" })
+public class SolicitacaoController {
+
+	@Autowired
+	SolicitacaoService solicitacaoService;
+
+	@ApiOperation("Retorna uma lista com todas os solicitações cadastradas")
+	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<List<Solicitacao>> getAll() {
+		return ResponseEntity.ok(solicitacaoService.getAll());
+	}
+
+	@ApiOperation("Retorna uma solicitação de acordo com o id")
+	@GetMapping(path = "/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<Solicitacao> get(@PathVariable Integer id) {
+		Solicitacao solicitacao = solicitacaoService.getbyId(id).get();
+		return ResponseEntity.ok(solicitacao);
+	}
+
+	@ApiOperation("Retorna uma solicitação de acordo com o código")
+	@GetMapping(path = "codigo/{codigoSolicitacao}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<Solicitacao> getByLogin(@PathVariable String codigoSolicitacao) {
+		return ResponseEntity.ok(solicitacaoService.getByCodigoSolicitacao(codigoSolicitacao));
+	}
+
+	@ApiOperation("Cadastra uma nova solicitação")
+	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<Solicitacao> create(@Valid @RequestBody Solicitacao solicitacao)
+			throws SolicitacaoDuplicadaException {
+		return ResponseEntity.status(HttpStatus.CREATED).body(solicitacaoService.create(solicitacao));
+	}
+
+	@ApiOperation("Apaga uma solicitação de acordo com o id")
+	@DeleteMapping(path = "/{id}")
+	public ResponseEntity<String> delete(@PathVariable Integer id) {
+		boolean response = solicitacaoService.delete(id);
+
+		if (response) {
+			return ResponseEntity.ok("Solicitação apagada com sucesso.");
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Solicitação não encontrada");
+		}
+	}
+	
+//	@ApiOperation("Atualiza uma solicitacao já existente com base no id")
+//	@PutMapping(path = "/{id}", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
+//			MediaType.APPLICATION_JSON_VALUE })
+//	public ResponseEntity<Solicitacao> put(@PathVariable Integer id, @RequestBody Solicitacao solicitacao) {
+//		Solicitacao solicitacaoAtualizada = solicitacaoService.update(id, solicitacao);
+//		return ResponseEntity.ok(solicitacaoAtualizada);
+//	}
+
+}

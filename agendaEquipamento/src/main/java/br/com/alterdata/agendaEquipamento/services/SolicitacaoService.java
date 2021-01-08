@@ -27,25 +27,24 @@ public class SolicitacaoService {
 	}
 	
 	@Transactional
-	public Solicitacao getByCodigoSolicitacao(String codigoSolicitacao) {
-		return solicitacaoRepository.getWithCodigoSolicitacao(codigoSolicitacao);
+	public Solicitacao getByCodigoSolicitacao(String codigoSolicitacao){
+		return solicitacaoRepository.getByCodigoSolicitacao(codigoSolicitacao);
 	}
 
 	@Transactional
-	public List<Solicitacao> getAll() {
-		List<Solicitacao> solicitacaos = solicitacaoRepository.findAll();
-		return solicitacaos;
+	public List<Solicitacao> getAll(){
+		return solicitacaoRepository.findAll();
 	}
 	
 	@Transactional
-	public Optional<Solicitacao> getbyId(Integer id) {
+	public Optional<Solicitacao> getbyId(Integer id){
 		return solicitacaoRepository.findById(id);
 	}
 	
 	@Transactional
-	public boolean delete(Integer id) {
+	public boolean delete(Integer id){
 		Optional<Solicitacao> solicitacao = solicitacaoRepository.findById(id);
-		if(solicitacao.isPresent()) {
+		if (solicitacao.isPresent()) {
 			solicitacaoRepository.delete(solicitacao.get());
 			return true; 
 		} else {

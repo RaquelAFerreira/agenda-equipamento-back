@@ -26,13 +26,12 @@ public class UsuarioService{
 	
 	@Transactional
 	public Usuario getByLogin(String login){
-		return usuarioRepository.getWithLogin(login);
+		return usuarioRepository.getByLogin(login);
 	}
 
 	@Transactional
 	public List<Usuario> getAll(){
-		List<Usuario> usuarios = usuarioRepository.findAll();
-		return usuarios;
+		return usuarioRepository.findAll();
 	}
 	
 	@Transactional

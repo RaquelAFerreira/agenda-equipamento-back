@@ -5,7 +5,7 @@ import br.com.alterdata.agendaEquipamento.models.Equipamento;
 
 public interface EquipamentoRepository extends JpaRepository<Equipamento, Integer> {
 
-	@Query(value="SELECT * FROM equipamento WHERE codigoEquipamento = :codigoEquipamento",
+	@Query(value="SELECT * FROM equipamento WHERE codigo_equipamento = :codigoEquipamento",
 			nativeQuery=true)
-	Equipamento getWithCodigoEquipamento(String codigoEquipamento);
+	Equipamento getByCodigoEquipamento(String codigoEquipamento);
 }

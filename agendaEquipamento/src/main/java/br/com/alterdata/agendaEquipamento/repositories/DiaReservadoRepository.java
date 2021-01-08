@@ -7,8 +7,8 @@ import br.com.alterdata.agendaEquipamento.models.DiaReservado;
 
 public interface DiaReservadoRepository extends JpaRepository<DiaReservado, Integer> {
 	
-	@Query(value="SELECT * FROM diaReservado WHERE data = :data",
+	@Query(value="SELECT * FROM dia_reservado WHERE data = :data",
 			nativeQuery=true)
-	DiaReservado getWithData(LocalDate data);
+	DiaReservado getByData(LocalDate data);
 
 }

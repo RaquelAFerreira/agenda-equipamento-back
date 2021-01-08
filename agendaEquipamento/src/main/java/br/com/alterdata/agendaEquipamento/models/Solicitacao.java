@@ -2,8 +2,11 @@ package br.com.alterdata.agendaEquipamento.models;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
 import br.com.alterdata.agendaEquipamento.enums.Situacao;
 
 @Entity
@@ -21,19 +25,20 @@ public class Solicitacao{
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="idSolicitacao")
+	@Column(name="id_solicitacao")
 	private Integer idSolicitacao;
 	
 	@ManyToOne
-	@JoinColumn(name = "idUsuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario solicitante;
 	
 	@NotNull
+	@Enumerated(value = EnumType.STRING)
 	@Column(name = "situacao")
 	private Situacao situacao;
 	
 	@NotNull
-	@Column(name = "codigoSolicitacao", unique = true)
+	@Column(name = "codigo_solicitacao", unique = true)
 	private String codigoSolicitacao;
 	
 	@NotNull
@@ -45,9 +50,9 @@ public class Solicitacao{
 	private LocalTime hora;
 	
 	@OneToMany
-	@JoinTable (name = "equipamentosSolicitacao",
-			joinColumns = @JoinColumn(name = "idSolicitacao"),
-			inverseJoinColumns = @JoinColumn(name = "idEquipamento"))
+	@JoinTable (name = "equipamentos_solicitacao",
+			joinColumns = @JoinColumn(name = "id_solicitacao"),
+			inverseJoinColumns = @JoinColumn(name = "id_equipamento"))
 	private List<Equipamento> equipamentos;
 
 	public Usuario getSolicitante(){

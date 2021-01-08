@@ -1,5 +1,4 @@
 package br.com.alterdata.agendaEquipamento.models;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,35 +14,37 @@ public class Usuario {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
-	@Column(name="idUsuario")
+	@Column(name="id_usuario")
 	private Integer idUsuario;
 	
 	@NotNull
-	@Column(name = "cpf", length = 11)
 	@Size(min = 11, max = 11)
+	@Column(name = "cpf", length = 11, unique = true)
 	private String cpf;
 	
 	@NotNull
-	@Column(name = "nome", length = 100)
 	@Size(min = 1, max = 100)
+	@Column(name = "nome", length = 100)
 	private String nome;
 	
 	@NotNull
+	@Size(min = 5, max = 35)
 	@Column(name = "login", unique = true)
 	private String login;
 	
 	@NotNull
+	@Size(min = 5, max = 30)
 	@Column(name = "senha")
 	private String senha;
 	
 	@Column(name = "admin")
 	private boolean admin;
 
-	public String getCpf() {
+	public String getCpf(){
 		return cpf;
 	}
 
-	public void setCpf(String cpf) {
+	public void setCpf(String cpf){
 		this.cpf = cpf;
 	}
 
@@ -51,35 +52,35 @@ public class Usuario {
 		return nome;
 	}
 
-	public void setNome(String nome) {
+	public void setNome(String nome){
 		this.nome = nome;
 	}
 
-	public String getLogin() {
+	public String getLogin(){
 		return login;
 	}
 
-	public void setLogin(String login) {
+	public void setLogin(String login){
 		this.login = login;
 	}
 	
-	public String getSenha() {
+	public String getSenha(){
 		return senha;
 	}
 
-	public void setSenha(String senha) {
+	public void setSenha(String senha){
 		this.senha = senha;
 	}
 
-	public boolean isAdmin() {
+	public boolean isAdmin(){
 		return admin;
 	}
 
-	public void setAdmin(boolean admin) {
+	public void setAdmin(boolean admin){
 		this.admin = admin;
 	}
 
-	public Integer getIdUsuario() {
+	public Integer getIdUsuario(){
 		return idUsuario;
 	}
 	

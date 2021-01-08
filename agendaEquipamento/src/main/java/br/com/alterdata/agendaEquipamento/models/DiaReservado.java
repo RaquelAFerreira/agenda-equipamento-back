@@ -1,5 +1,4 @@
 package br.com.alterdata.agendaEquipamento.models;
-
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,23 +25,23 @@ public class DiaReservado {
 	@Column(name = "descricao")
 	private String descricao;
 
-	public LocalDate getData() {
+	public LocalDate getData(){
 		return data;
 	}
 
-	public void setData(LocalDate data) {
+	public void setData(LocalDate data){
 		this.data = data;
 	}
 
-	public String getDescricao() {
+	public String getDescricao(){
 		return descricao;
 	}
 
-	public void setDescricao(String descricao) {
+	public void setDescricao(String descricao){
 		this.descricao = descricao;
 	}
 
-	public Integer getIdDiaReservado() {
+	public Integer getIdDiaReservado(){
 		return idDiaReservado;
 	}
 

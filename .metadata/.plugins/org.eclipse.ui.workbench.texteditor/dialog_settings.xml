@@ -1,28 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="equipamento"/>
+		<item key="selection" value="DiaReservado"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="true"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="Usuário"/>
+			<item value="usuário"/>
 			<item value="usuario"/>
 			<item value="Usuario"/>
+			<item value="equipamento"/>
+			<item value="Equipamento"/>
+			<item value="With"/>
+			<item value="Empresa"/>
+			<item value="empresa"/>
+			<item value="SolicitacaoDuplicadaException"/>
+			<item value="Solicitacao"/>
+			<item value="solicitacao"/>
 			<item value="Nome"/>
 			<item value="ass"/>
 		</list>
 		<list key="replacehistory">
-			<item value="equipamento"/>
-			<item value="Equipamento"/>
-			<item value="Situacao"/>
-			<item value="Solicitacao"/>
+			<item value="DiaReservado"/>
+			<item value="diaReservado"/>
 			<item value="solicitacao"/>
+			<item value="Solicitacao"/>
+			<item value="By"/>
+			<item value="Equipamento"/>
+			<item value="equipamento"/>
+			<item value="Usuario"/>
+			<item value="usuario"/>
+			<item value="DiaReservadoDuplicadoException"/>
+			<item value="Situacao"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1021"/>
+		<item key="DIALOG_X_ORIGIN" value="601"/>
 		<item key="DIALOG_Y_ORIGIN" value="345"/>
 		<item key="DIALOG_WIDTH" value="284"/>
 		<item key="DIALOG_HEIGHT" value="391"/>

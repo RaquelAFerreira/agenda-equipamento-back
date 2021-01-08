@@ -1,0 +1,11 @@
+package br.com.alterdata.agendaEquipamento.repositories;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import br.com.alterdata.agendaEquipamento.models.Equipamento;
+
+public interface EquipamentoRepository extends JpaRepository<Equipamento, Integer> {
+
+	@Query(value="SELECT * FROM equipamento WHERE codigoEquipamento = :codigoEquipamento",
+			nativeQuery=true)
+	Equipamento getByCodigoEquipamento(String codigoEquipamento);
+}

@@ -1,8 +1,9 @@
 package br.com.alterdata.agendaEquipamento.services;
-
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.alterdata.agendaEquipamento.exceptions.LoginDuplicadoException;
 import br.com.alterdata.agendaEquipamento.models.Usuario;

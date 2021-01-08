@@ -3,6 +3,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.alterdata.agendaEquipamento.exceptions.DiaReservadoDuplicadoException;
 import br.com.alterdata.agendaEquipamento.models.DiaReservado;
@@ -11,11 +13,12 @@ import br.com.alterdata.agendaEquipamento.repositories.DiaReservadoRepository;
 @Service
 public class DiaReservadoService {
 
+	@Autowired
 	DiaReservadoRepository diaReservadoRepository;
 	
 	@Transactional
 	public DiaReservado create(DiaReservado diaReservado) throws DiaReservadoDuplicadoException{
-		DiaReservado diaReservadoEncontrado = diaReservadoRepository.getWithData(diaReservado.getData());
+		DiaReservado diaReservadoEncontrado = diaReservadoRepository.getByData(diaReservado.getData());
 		if (diaReservadoEncontrado == null) {
 			return diaReservadoRepository.save(diaReservado);	
 		} else {

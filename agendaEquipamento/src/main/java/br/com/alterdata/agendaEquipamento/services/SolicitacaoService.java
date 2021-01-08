@@ -3,6 +3,8 @@ package br.com.alterdata.agendaEquipamento.services;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.alterdata.agendaEquipamento.exceptions.SolicitacaoDuplicadaException;
 import br.com.alterdata.agendaEquipamento.models.Solicitacao;
@@ -10,12 +12,13 @@ import br.com.alterdata.agendaEquipamento.repositories.SolicitacaoRepository;
 
 @Service
 public class SolicitacaoService {
-	
-SolicitacaoRepository solicitacaoRepository;
+
+	@Autowired
+	SolicitacaoRepository solicitacaoRepository;
 	
 	@Transactional
-	public Solicitacao create(Solicitacao solicitacao) throws SolicitacaoDuplicadaException {
-		Solicitacao solicitacaoEncontrada = solicitacaoRepository.getWithCodigoSolicitacao(solicitacao.getCodigoSolicitacao());
+	public Solicitacao create(Solicitacao solicitacao) throws SolicitacaoDuplicadaException{
+		Solicitacao solicitacaoEncontrada = solicitacaoRepository.getByCodigoSolicitacao(solicitacao.getCodigoSolicitacao());
 		if(solicitacaoEncontrada == null) {
 			return solicitacaoRepository.save(solicitacao);	
 		} else {

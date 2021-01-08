@@ -3071,3 +3071,18 @@ java.util.concurrent.TimeoutException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-01-08 17:34:34.110
 !MESSAGE executing callback sts4.classpath.cAcLGITz SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-01-08 18:39:35.313
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.cAcLGITz
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-01-08 18:39:35.315
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.cAcLGITz
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-01-08 18:39:35.315
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-01-08 18:39:35.316
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.cAcLGITz => OK
+
+!ENTRY org.eclipse.ui 2 2 2021-01-08 18:39:35.946
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)

@@ -1,0 +1,87 @@
+package br.com.alterdata.agendaEquipamento.services;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.List;
+import java.util.Optional;
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import br.com.alterdata.agendaEquipamento.exceptions.SolicitacaoDuplicadaException;
+import br.com.alterdata.agendaEquipamento.models.Equipamento;
+import br.com.alterdata.agendaEquipamento.models.Solicitacao;
+import br.com.alterdata.agendaEquipamento.repositories.SolicitacaoRepository;
+
+@Service
+public class SolicitacaoService {
+
+	@Autowired
+	SolicitacaoRepository solicitacaoRepository;
+	
+	@Transactional
+	public Solicitacao create(Solicitacao solicitacao) throws SolicitacaoDuplicadaException{
+		Solicitacao solicitacaoEncontrada = solicitacaoRepository.getByCodigoSolicitacao(solicitacao.getCodigoSolicitacao());
+		if(solicitacaoEncontrada == null) {
+			return solicitacaoRepository.save(solicitacao);	
+		} else {
+			throw new SolicitacaoDuplicadaException(solicitacao.getCodigoSolicitacao());
+		}
+	}
+	
+	@Transactional
+	public List<Solicitacao> getBySituacao(String situacao){
+		return solicitacaoRepository.getBySituacao(situacao);
+	}
+	
+	@Transactional
+	public Solicitacao getByDataHora(String data, String hora){
+		LocalDate dataFormatada = LocalDate.parse(data);
+		LocalTime horaFormatada = LocalTime.parse(hora);
+		return solicitacaoRepository.getByDataHora(dataFormatada, horaFormatada);
+	}
+	
+	@Transactional
+	public Solicitacao getByCodigoSolicitacao(String codigoSolicitacao){
+		return solicitacaoRepository.getByCodigoSolicitacao(codigoSolicitacao);
+	}
+
+	@Transactional
+	public List<Solicitacao> getAll(){
+		return solicitacaoRepository.findAll();
+	}
+	
+	@Transactional
+	public Optional<Solicitacao> getbyId(Integer id){
+		return solicitacaoRepository.findById(id);
+	}
+	
+	@Transactional
+	public boolean delete(Integer id){
+		Optional<Solicitacao> solicitacao = solicitacaoRepository.findById(id);
+		if (solicitacao.isPresent()) {
+			solicitacaoRepository.delete(solicitacao.get());
+			return true; 
+		} else {
+			return false;
+		}
+	}
+	
+//	@Transactional
+//	public Solicitacao update(Integer id, Solicitacao solicitacao) {
+//		Optional<Solicitacao> solicitacaoSelecionado = solicitacaoRepository.findById(id);
+//		Solicitacao solicitacaoAtualizado = solicitacaoSelecionado.get();
+//		
+//		if(solicitacao.getCodigoSolicitacao().equals("") == false && solicitacao.getCodigoSolicitacao() != null) {
+//			solicitacaoAtualizado.setCodigoSolicitacao(solicitacao.getCodigoSolicitacao());
+//		}
+//		
+//		if(solicitacao.getSituacao() != null) {
+//			solicitacaoAtualizado.setSituacao(solicitacao.getSituacao());
+//		}
+//		
+//		return solicitacaoRepository.save(solicitacaoAtualizado);
+//	}
+//	
+	
+}

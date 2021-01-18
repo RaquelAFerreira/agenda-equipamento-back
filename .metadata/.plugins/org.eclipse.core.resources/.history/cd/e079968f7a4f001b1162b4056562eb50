@@ -1,5 +1,0 @@
-package br.com.alterdata.agendaEquipamento.models;
-
-public abstract class Equipamento {
-
-}

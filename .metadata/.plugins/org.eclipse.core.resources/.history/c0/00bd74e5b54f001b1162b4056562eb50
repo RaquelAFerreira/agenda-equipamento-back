@@ -1,8 +1,0 @@
-package br.com.alterdata.agendaEquipamento.models;
-
-public class Equipamento {
-	
-	String codigo;
-	CategoriaEquipamento categoria;
-
-}

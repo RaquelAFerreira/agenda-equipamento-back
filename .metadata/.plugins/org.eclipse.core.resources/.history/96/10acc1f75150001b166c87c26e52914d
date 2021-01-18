@@ -1,5 +1,0 @@
-package br.com.alterdata.agendaEquipamento.services;
-
-public interface SolicitacaoRepository {
-
-}

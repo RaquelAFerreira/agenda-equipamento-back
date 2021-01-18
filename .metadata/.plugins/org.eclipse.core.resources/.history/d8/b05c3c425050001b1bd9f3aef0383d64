@@ -1,7 +1,0 @@
-package br.com.alterdata.agendaEquipamento.repositorys;
-
-import br.com.alterdata.agendaEquipamento.models.Usuario;
-
-public class UsuarioRepository extends JpaRepository<Usuario, Integer> {
-
-}

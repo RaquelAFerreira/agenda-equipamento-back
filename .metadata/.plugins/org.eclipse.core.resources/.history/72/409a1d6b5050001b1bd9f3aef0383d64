@@ -1,7 +1,0 @@
-package br.com.alterdata.agendaEquipamento.repositorys;
-
-import br.com.alterdata.agendaEquipamento.models.Usuario;
-import org.springframework.data.jpa.repository.JpaRepository;
-public class UsuarioRepository extends JpaRepository<Usuario, Integer> {
-
-}

@@ -40,6 +40,27 @@ public class Usuario {
 	@Column(name = "admin")
 	private boolean admin;
 
+	public Usuario(Integer idUsuario) {
+		super();
+		this.idUsuario = idUsuario;
+	}
+
+	public Usuario() {
+		super();
+	}
+
+	public Usuario(Integer idUsuario, @NotNull @Size(min = 11, max = 11) String cpf,
+			@NotNull @Size(min = 1, max = 100) String nome, @NotNull @Size(min = 5, max = 35) String login,
+			@NotNull @Size(min = 5, max = 30) String senha, boolean admin) {
+		super();
+		this.idUsuario = idUsuario;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.login = login;
+		this.senha = senha;
+		this.admin = admin;
+	}
+
 	public String getCpf(){
 		return cpf;
 	}

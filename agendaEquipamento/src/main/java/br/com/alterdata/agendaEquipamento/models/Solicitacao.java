@@ -12,10 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import br.com.alterdata.agendaEquipamento.enums.Situacao;
 
@@ -46,10 +47,11 @@ public class Solicitacao{
 	private LocalDate data;
 	
 	@NotNull
-	@Column(name = "hora")
-	private LocalTime hora;
+	@Column(name = "hora", length = 5)
+	@Size(min = 5, max = 5)
+	private String hora;
 	
-	@OneToMany
+	@ManyToMany
 	@JoinTable (name = "equipamentos_solicitacao",
 			joinColumns = @JoinColumn(name = "id_solicitacao"),
 			inverseJoinColumns = @JoinColumn(name = "id_equipamento"))
@@ -95,11 +97,11 @@ public class Solicitacao{
 		this.data = data;
 	}
 
-	public LocalTime getHora() {
+	public String getHora() {
 		return hora;
 	}
 
-	public void setHora(LocalTime hora) {
+	public void setHora(String hora) {
 		this.hora = hora;
 	}
 

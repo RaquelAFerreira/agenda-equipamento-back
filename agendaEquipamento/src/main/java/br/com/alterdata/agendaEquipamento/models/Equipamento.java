@@ -39,6 +39,31 @@ public class Equipamento implements Comparable<Equipamento> {
 	@Column(name = "disponivel")
 	boolean disponivel;
 
+	public Equipamento(Integer idEquipamento, @NotNull String codigoEquipamento,
+			@NotNull CategoriaEquipamento categoria, @NotNull @Size(min = 1, max = 75) String descricao,
+			@NotNull boolean disponivel) {
+		super();
+		this.idEquipamento = idEquipamento;
+		this.codigoEquipamento = codigoEquipamento;
+		this.categoria = categoria;
+		this.descricao = descricao;
+		this.disponivel = disponivel;
+	}
+	
+	@Override
+	public int compareTo(Equipamento o) {
+		return this.codigoEquipamento.compareTo(o.getCodigoEquipamento());
+	}
+
+	public Equipamento(Integer idEquipamento) {
+		super();
+		this.idEquipamento = idEquipamento;
+	}
+
+	public Equipamento() {
+		super();
+	}
+
 	public String getCodigoEquipamento(){
 		return codigoEquipamento;
 	}

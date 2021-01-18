@@ -1,7 +1,9 @@
 package br.com.alterdata.agendaEquipamento.controllers;
 
 import java.util.List;
+
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.alterdata.agendaEquipamento.enums.CategoriaEquipamento;
 import br.com.alterdata.agendaEquipamento.exceptions.EquipamentoDuplicadoException;
 import br.com.alterdata.agendaEquipamento.models.Equipamento;
 import br.com.alterdata.agendaEquipamento.services.EquipamentoService;
@@ -44,6 +48,13 @@ public class EquipamentoController {
 	public ResponseEntity<Equipamento> getByLogin(@PathVariable String codigoEquipamento){
 		return ResponseEntity.ok(equipamentoService.getByCodigoEquipamento(codigoEquipamento));
 	}
+	
+	@ApiOperation("Retorna um equipamento de acordo com a categoria")
+	@GetMapping(path="categoria/{categoria}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	public ResponseEntity<Equipamento> getByCategoria(@PathVariable String categoria){
+		return ResponseEntity.ok(equipamentoService.getByCategoria(categoria));
+	}
+	
 
 	@ApiOperation("Cadastra um novo equipamento")
 	@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE},

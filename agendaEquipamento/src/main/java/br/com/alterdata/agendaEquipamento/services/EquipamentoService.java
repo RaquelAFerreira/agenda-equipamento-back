@@ -1,12 +1,10 @@
 package br.com.alterdata.agendaEquipamento.services;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import br.com.alterdata.agendaEquipamento.exceptions.EquipamentoDuplicadoException;
 import br.com.alterdata.agendaEquipamento.models.Equipamento;
 import br.com.alterdata.agendaEquipamento.repositories.EquipamentoRepository;
@@ -31,10 +29,18 @@ public class EquipamentoService {
 	public Equipamento getByCodigoEquipamento(String codigoEquipamento){
 		return equipamentoRepository.getByCodigoEquipamento(codigoEquipamento);
 	}
+	
+	@Transactional
+	public Equipamento getByCategoria(String categoria){
+		List<Equipamento> listaEquipamentos = equipamentoRepository.getByCategoria(categoria);
+		return listaEquipamentos.stream().findFirst().get();
+	}
 
 	@Transactional
 	public List<Equipamento> getAll(){
-		return equipamentoRepository.findAll();
+		List<Equipamento> sortedList = equipamentoRepository.findAll();
+		Collections.sort(sortedList);
+		return sortedList;
 	}
 	
 	@Transactional

@@ -1,17 +1,20 @@
 package br.com.alterdata.agendaEquipamento.models;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import br.com.alterdata.agendaEquipamento.enums.CategoriaEquipamento;
 
 @Entity
 @Table(name = "equipamento")
-public class Equipamento {
+public class Equipamento implements Comparable<Equipamento> {
 	
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -23,6 +26,7 @@ public class Equipamento {
 	private String codigoEquipamento;
 	
 	@NotNull
+	@Enumerated(value = EnumType.STRING)
 	@Column(name = "categoria")
 	private CategoriaEquipamento categoria;
 	

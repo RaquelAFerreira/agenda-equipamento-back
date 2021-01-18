@@ -35,8 +35,7 @@ public class DiaReservadoController {
 	@ApiOperation("Retorna um dia reservado de acordo com o id")
 	@GetMapping(path="/{id}", produces = {MediaType.APPLICATION_JSON_VALUE} )
 	public ResponseEntity<DiaReservado> get(@PathVariable Integer id){
-		DiaReservado diaReservado = diaReservadoService.getbyId(id).get();
-		return ResponseEntity.ok(diaReservado);
+		return ResponseEntity.ok(diaReservadoService.getbyId(id).get());
 	}
 	
 	@ApiOperation("Retorna um dia reservado baseado em sua data")
@@ -46,8 +45,8 @@ public class DiaReservadoController {
 	}
 
 	@ApiOperation("Cadastra um novo dia reservado")
-	@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE},
-				produces = {MediaType.APPLICATION_JSON_VALUE})
+	@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}, 
+				 produces = {MediaType.APPLICATION_JSON_VALUE})
 	public ResponseEntity<DiaReservado> create(@Valid @RequestBody DiaReservado diaReservado) throws DiaReservadoDuplicadoException{
 		return ResponseEntity.status(HttpStatus.CREATED).body(diaReservadoService.create(diaReservado));
 	}
@@ -65,7 +64,7 @@ public class DiaReservadoController {
 	public ResponseEntity<String> delete(@PathVariable Integer id){
 		boolean response = diaReservadoService.delete(id);
 		
-		if(response) {		
+		if (response) {		
 			return ResponseEntity.ok("Dia reservado apagado com sucesso.");
 		} else {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Dia reservado não encontrado");

@@ -1,6 +1,10 @@
 package br.com.alterdata.agendaEquipamento.repositories;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+
+import br.com.alterdata.agendaEquipamento.enums.CategoriaEquipamento;
 import br.com.alterdata.agendaEquipamento.models.Equipamento;
 
 public interface EquipamentoRepository extends JpaRepository<Equipamento, Integer> {
@@ -8,4 +12,8 @@ public interface EquipamentoRepository extends JpaRepository<Equipamento, Intege
 	@Query(value="SELECT * FROM equipamento WHERE codigo_equipamento = :codigoEquipamento",
 			nativeQuery=true)
 	Equipamento getByCodigoEquipamento(String codigoEquipamento);
+	
+	@Query(value="SELECT * FROM equipamento WHERE categoria = :categoria AND disponivel = true", 
+			nativeQuery=true)
+	List<Equipamento> getByCategoria(String categoria);
 }

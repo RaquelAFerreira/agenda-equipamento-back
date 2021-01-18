@@ -4660,3 +4660,15 @@ java.lang.InterruptedException
 
 !ENTRY org.eclipse.ui 2 2 2021-01-18 09:27:04.122
 !MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-01-18 12:13:11.757
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.qYfWSgJI
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-01-18 12:13:11.758
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.qYfWSgJI
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-01-18 12:13:11.759
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-01-18 12:13:11.759
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.qYfWSgJI => OK

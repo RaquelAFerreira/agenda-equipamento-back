@@ -71,21 +71,20 @@ public class SolicitacaoService {
 		}
 	}
 	
-//	@Transactional
-//	public Solicitacao update(Integer id, Solicitacao solicitacao) {
-//		Optional<Solicitacao> solicitacaoSelecionado = solicitacaoRepository.findById(id);
-//		Solicitacao solicitacaoAtualizado = solicitacaoSelecionado.get();
-//		
-//		if(solicitacao.getCodigoSolicitacao().equals("") == false && solicitacao.getCodigoSolicitacao() != null) {
-//			solicitacaoAtualizado.setCodigoSolicitacao(solicitacao.getCodigoSolicitacao());
-//		}
-//		
-//		if(solicitacao.getSituacao() != null) {
-//			solicitacaoAtualizado.setSituacao(solicitacao.getSituacao());
-//		}
-//		
-//		return solicitacaoRepository.save(solicitacaoAtualizado);
-//	}
-//	
+	@Transactional
+	public Solicitacao update(Integer id, Solicitacao solicitacao) {
+		Optional<Solicitacao> solicitacaoSelecionado = solicitacaoRepository.findById(id);
+		Solicitacao solicitacaoAtualizado = solicitacaoSelecionado.get();
+		
+		if(solicitacao.getCodigoSolicitacao() != null) {
+			solicitacaoAtualizado.setCodigoSolicitacao(solicitacao.getCodigoSolicitacao());
+		}
+		
+		if(solicitacao.getSituacao().equals("") == false && solicitacao.getSituacao() != null) {
+			solicitacaoAtualizado.setSituacao(solicitacao.getSituacao());
+		}
+		
+		return solicitacaoRepository.save(solicitacaoAtualizado);
+	}	
 	
 }

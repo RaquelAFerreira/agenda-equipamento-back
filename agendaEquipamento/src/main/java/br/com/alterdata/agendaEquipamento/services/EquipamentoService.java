@@ -61,13 +61,31 @@ public class EquipamentoService {
 	}
 	
 	@Transactional
+	public Equipamento setEquipamentoIndisponivel(Integer id){
+		Optional<Equipamento> equipamentoSelecionado = equipamentoRepository.findById(id);
+		Equipamento equipamentoAtualizado = equipamentoSelecionado.get();
+		equipamentoAtualizado.setDisponivel(false);
+		return equipamentoRepository.save(equipamentoAtualizado);
+	}
+	
+	@Transactional
+	public Equipamento setEquipamentoDisponivel(Integer id){
+		Optional<Equipamento> equipamentoSelecionado = equipamentoRepository.findById(id);
+		Equipamento equipamentoAtualizado = equipamentoSelecionado.get();
+		equipamentoAtualizado.setDisponivel(true);
+		return equipamentoRepository.save(equipamentoAtualizado);
+	}
+	
+	@Transactional
 	public Equipamento update(Integer id, Equipamento equipamento){
 		Optional<Equipamento> equipamentoSelecionado = equipamentoRepository.findById(id);
 		Equipamento equipamentoAtualizado = equipamentoSelecionado.get();
 		
-		if (equipamento.getDescricao().equals("") == false && equipamento.getDescricao() != null) {
+		if (equipamento.getDescricao() != null) {
 			equipamentoAtualizado.setDescricao(equipamento.getDescricao());
 		}
+		
+		equipamentoAtualizado.setDisponivel(equipamento.isDisponivel());
 		
 		return equipamentoRepository.save(equipamentoAtualizado);
 	}

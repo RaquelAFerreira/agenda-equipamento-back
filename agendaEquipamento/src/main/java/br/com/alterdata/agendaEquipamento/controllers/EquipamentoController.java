@@ -70,6 +70,21 @@ public class EquipamentoController {
 		Equipamento equipamentoAtualizado = equipamentoService.update(id, equipamento);
 		return ResponseEntity.ok(equipamentoAtualizado);
 	}
+	
+	@ApiOperation("Seta indisponível")
+	@PutMapping(path="setIndisponivel/{id}")
+	public ResponseEntity<Equipamento> setIndisponivel(@PathVariable Integer id){
+		Equipamento equipamentoAtualizado = equipamentoService.setEquipamentoIndisponivel(id);
+		return ResponseEntity.ok(equipamentoAtualizado);
+	}
+	
+	@ApiOperation("Seta disponível")
+	@PutMapping(path="setDisponivel/{id}")
+	public ResponseEntity<Equipamento> setDisponivel(@PathVariable Integer id){
+		Equipamento equipamentoAtualizado = equipamentoService.setEquipamentoDisponivel(id);
+		return ResponseEntity.ok(equipamentoAtualizado);
+	}
+
 
 	@ApiOperation("Apaga um equipamento de acordo com o id")
 	@DeleteMapping(path="/{id}")

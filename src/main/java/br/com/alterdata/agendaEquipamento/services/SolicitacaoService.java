@@ -1,15 +1,12 @@
 package br.com.alterdata.agendaEquipamento.services;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.alterdata.agendaEquipamento.exceptions.SolicitacaoDuplicadaException;
-import br.com.alterdata.agendaEquipamento.models.Equipamento;
 import br.com.alterdata.agendaEquipamento.models.Solicitacao;
 import br.com.alterdata.agendaEquipamento.repositories.SolicitacaoRepository;
 
@@ -54,7 +51,6 @@ public class SolicitacaoService {
 		return solicitacaoRepository.getBySolicitante(solicitante);
 	}
 	
-	
 	@Transactional
 	public Optional<Solicitacao> getbyId(Integer id){
 		return solicitacaoRepository.findById(id);
@@ -80,7 +76,7 @@ public class SolicitacaoService {
 			solicitacaoAtualizado.setCodigoSolicitacao(solicitacao.getCodigoSolicitacao());
 		}
 		
-		if(solicitacao.getSituacao().equals("") == false && solicitacao.getSituacao() != null) {
+		if(solicitacao.getSituacao() != null) {
 			solicitacaoAtualizado.setSituacao(solicitacao.getSituacao());
 		}
 		

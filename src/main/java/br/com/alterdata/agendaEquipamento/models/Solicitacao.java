@@ -1,8 +1,6 @@
 package br.com.alterdata.agendaEquipamento.models;
 import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -17,8 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import br.com.alterdata.agendaEquipamento.enums.Situacao;
+import br.com.alterdata.agendaEquipamento.utils.GeradorCodigo;
 
 @Entity
 @Table(name = "solicitacao")
@@ -29,6 +27,7 @@ public class Solicitacao{
 	@Column(name="id_solicitacao")
 	private Integer idSolicitacao;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_usuario")
 	private Usuario solicitante;
@@ -56,6 +55,18 @@ public class Solicitacao{
 			joinColumns = @JoinColumn(name = "id_solicitacao"),
 			inverseJoinColumns = @JoinColumn(name = "id_equipamento"))
 	private List<Equipamento> equipamentos;
+
+	public Solicitacao(@NotNull Usuario solicitante, @NotNull Situacao situacao, 
+					@NotNull String codigoSolicitacao,@NotNull LocalDate data, 
+					@NotNull @Size(min = 5, max = 5) String hora, List<Equipamento> equipamentos){
+		super();
+		this.solicitante = solicitante;
+		this.situacao = situacao;
+		this.codigoSolicitacao = GeradorCodigo.geraSequenciaAleatoria(5, "0123456789");
+		this.data = data;
+		this.hora = hora;
+		this.equipamentos = equipamentos;
+	}
 
 	public Usuario getSolicitante(){
 		return solicitante;

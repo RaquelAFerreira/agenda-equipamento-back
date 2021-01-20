@@ -76,7 +76,7 @@ public class SolicitacaoController {
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, 
 				 produces = { MediaType.APPLICATION_JSON_VALUE })
 	public ResponseEntity<Solicitacao> create(@Valid @RequestBody Solicitacao solicitacao)
-			throws SolicitacaoDuplicadaException {
+			throws Exception {
 		return ResponseEntity.status(HttpStatus.CREATED).body(solicitacaoService.create(solicitacao));
 	}
 	

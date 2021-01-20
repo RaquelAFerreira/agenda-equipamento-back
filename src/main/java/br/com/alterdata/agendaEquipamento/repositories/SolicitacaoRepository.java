@@ -1,13 +1,9 @@
 package br.com.alterdata.agendaEquipamento.repositories;
 import java.time.LocalDate;
 import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-
 import br.com.alterdata.agendaEquipamento.models.Solicitacao;
-import br.com.alterdata.agendaEquipamento.models.Usuario;
-
 public interface SolicitacaoRepository extends JpaRepository<Solicitacao, Integer> {
 	
 	@Query(value="SELECT * FROM solicitacao WHERE codigo_solicitacao = :codigoSolicitacao",

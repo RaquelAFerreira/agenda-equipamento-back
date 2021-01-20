@@ -6,9 +6,9 @@ import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import br.com.alterdata.agendaEquipamento.exceptions.SolicitacaoDuplicadaException;
 import br.com.alterdata.agendaEquipamento.models.Solicitacao;
 import br.com.alterdata.agendaEquipamento.repositories.SolicitacaoRepository;
+import br.com.alterdata.agendaEquipamento.services.validations.ValidarSolicitacao;
 
 @Service
 public class SolicitacaoService {
@@ -16,14 +16,13 @@ public class SolicitacaoService {
 	@Autowired
 	SolicitacaoRepository solicitacaoRepository;
 	
+	@Autowired
+	ValidarSolicitacao validarSolicitacao;
+	
 	@Transactional
-	public Solicitacao create(Solicitacao solicitacao) throws SolicitacaoDuplicadaException{
-		Solicitacao solicitacaoEncontrada = solicitacaoRepository.getByCodigoSolicitacao(solicitacao.getCodigoSolicitacao());
-		if(solicitacaoEncontrada == null) {
-			return solicitacaoRepository.save(solicitacao);	
-		} else {
-			throw new SolicitacaoDuplicadaException(solicitacao.getCodigoSolicitacao());
-		}
+	public Solicitacao create(Solicitacao solicitacao) throws Exception{		
+		validarSolicitacao.validar(solicitacao);
+		return solicitacaoRepository.save(solicitacao);			
 	}
 	
 	@Transactional

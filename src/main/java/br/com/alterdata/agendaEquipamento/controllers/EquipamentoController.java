@@ -35,6 +35,12 @@ public class EquipamentoController {
 	public ResponseEntity<List<Equipamento>> getAll(){
 		return ResponseEntity.ok(equipamentoService.getAll());
 	}
+	
+	@ApiOperation("Retorna uma lista com todos os disponíveis")
+	@GetMapping(path="/disponiveis", produces = {MediaType.APPLICATION_JSON_VALUE} )
+	public ResponseEntity<List<Equipamento>> getDisponiveis(){
+		return ResponseEntity.ok(equipamentoService.getDisponiveis());
+	}
 
 	@ApiOperation("Retorna um equipamento de acordo com o id")
 	@GetMapping(path="/{id}", produces = {MediaType.APPLICATION_JSON_VALUE} )
@@ -55,7 +61,6 @@ public class EquipamentoController {
 		return ResponseEntity.ok(equipamentoService.getByCategoria(categoria));
 	}
 	
-
 	@ApiOperation("Cadastra um novo equipamento")
 	@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE},
 				produces = {MediaType.APPLICATION_JSON_VALUE})
@@ -84,7 +89,6 @@ public class EquipamentoController {
 		Equipamento equipamentoAtualizado = equipamentoService.setEquipamentoDisponivel(id);
 		return ResponseEntity.ok(equipamentoAtualizado);
 	}
-
 
 	@ApiOperation("Apaga um equipamento de acordo com o id")
 	@DeleteMapping(path="/{id}")

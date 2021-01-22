@@ -35,6 +35,11 @@ public class EquipamentoService {
 		List<Equipamento> listaEquipamentos = equipamentoRepository.getByCategoria(categoria);
 		return listaEquipamentos.stream().findFirst().get();
 	}
+	
+	@Transactional
+	public List<Equipamento> getDisponiveis(){
+		return equipamentoRepository.getDisponiveis();
+	}
 
 	@Transactional
 	public List<Equipamento> getAll(){

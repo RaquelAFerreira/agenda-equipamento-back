@@ -16,4 +16,8 @@ public interface EquipamentoRepository extends JpaRepository<Equipamento, Intege
 	@Query(value="SELECT * FROM equipamento WHERE categoria = :categoria AND disponivel = true", 
 			nativeQuery=true)
 	List<Equipamento> getByCategoria(String categoria);
+	
+	@Query(value="SELECT * FROM equipamento WHERE disponivel = true", 
+			nativeQuery=true)
+	List<Equipamento> getDisponiveis();
 }

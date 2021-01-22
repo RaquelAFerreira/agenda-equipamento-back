@@ -55,18 +55,6 @@ public class Solicitacao{
 			inverseJoinColumns = @JoinColumn(name = "id_equipamento"))
 	private List<Equipamento> equipamentos;
 
-//	public Solicitacao(@NotNull Usuario solicitante, @NotNull Situacao situacao, 
-//					@NotNull LocalDate data, @NotNull @Size(min = 5, max = 5) String hora, 
-//					List<Equipamento> equipamentos){
-//		super();
-//		this.solicitante = solicitante;
-//		this.situacao = situacao;
-//		this.codigoSolicitacao = GeradorCodigo.geraSequenciaAleatoria(5, "0123456789");
-//		this.data = data;
-//		this.hora = hora;
-//		this.equipamentos = equipamentos;
-//	}
-
 	public Solicitacao() {
 		super();
 		this.codigoSolicitacao = GeradorCodigo.geraSequenciaAleatoria(5, "0123456789");

@@ -2,7 +2,7 @@ package br.com.alterdata.agendaEquipamento.exceptions;
 
 import java.time.LocalDate;
 
-public class HorarioOcupadoExcepetion extends Exception{
+public class HorarioOcupadoException extends Exception{
 	
 private static final long serialVersionUID = -6840138218861403331L;
 	
@@ -10,17 +10,38 @@ private static final long serialVersionUID = -6840138218861403331L;
 	private LocalDate data;
 	private String hora;
 	
-	public HorarioOcupadoExcepetion(){
+	public HorarioOcupadoException(){
 		super();
 	}
 
-	public HorarioOcupadoExcepetion(String msg, LocalDate data, String hora) {
+	public HorarioOcupadoException(LocalDate data, String hora) {
 		super();
-		this.msg = msg;
 		this.data = data;
 		this.hora = hora;
 	}
 
+	public String getMsg() {
+		return msg;
+	}
 
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
+	public String getHora() {
+		return hora;
+	}
+
+	public void setHora(String hora) {
+		this.hora = hora;
+	}
 
 }
